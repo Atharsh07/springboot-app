@@ -9,4 +9,12 @@
         <property name="className" value="ExampleClass"/>
     </bean>
 
+    <bean id="userService" class="org.example.service.UserService">
+        <constructor-arg ref="userConfig"/>
+    </bean>
+
+    <bean id="orderService" class="org.example.service.orderService" factory-method="createInstance">
+        <constructor-arg ref="userService"/>
+        <constructor-arg ref="userConfig"/>
+    </bean>
 </beans>
