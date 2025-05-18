@@ -1,17 +1,25 @@
 package org.example;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.example.classes.Man;
+import org.example.classes.PersonIncovationHandler;
+import org.example.classes.Persons;
+import java.lang.reflect.Proxy;
 
-@SpringBootApplication
+
 public class App {
 
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
-    }
-
-    public static void getInstance(){
-        System.out.println("Hi Hello i am atharsh");
+        Man mohan = new Man("atharsh", "30", "chennai", "india");
+        ClassLoader mohanClassLoader = mohan.getClass().getClassLoader();
+        Class[] interfaces = mohan.getClass().getInterfaces();
+        Persons proxyMohan = (Persons) Proxy.newProxyInstance(
+                mohanClassLoader,
+                interfaces,
+                new PersonIncovationHandler(mohan)
+        );
+        proxyMohan.introduce(mohan.getName());
+        proxyMohan.sayAge(mohan.getAge());
+        proxyMohan.saywhereFrom(mohan.getCity() , mohan.getCountry());
     }
 
 }

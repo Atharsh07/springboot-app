@@ -1,19 +1,32 @@
 package org.example.classes;
 
-public class Main implements Persons {
+public class Man implements Persons {
 
     private String name;
     private String age;
     private String city;
     private String country;
 
-    public Main(String name, String age, String city, String country){
+
+    public Man(String name, String age, String city, String country) {
         this.name = name;
         this.age = age;
         this.city = city;
         this.country = country;
     }
 
+    public String getName(){
+        return name;
+    }
+    public String getAge(){
+        return age;
+    }
+    public String getCity(){
+        return city;
+    }
+    public String getCountry(){
+        return country;
+    }
 
     @Override
     public void introduce(String name) {
