@@ -10,4 +10,8 @@ public class App {
         SpringApplication.run(App.class, args);
     }
 
+    public static void getInstance(){
+        System.out.println("Hi Hello i am atharsh");
+    }
+
 }
